@@ -1,0 +1,129 @@
+<%- include('partials/header'); -%>
+
+    <br><br>
+    <button type="button" class="btn btn-dark" data-toggle="modal" data-target=".bd-example-modal-xl">Post a new blog</button>
+
+    <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <form style="margin: 50px;" action="/compose" method="POST">
+                    <h1>Post a new blog post</h1>
+                    <br><br>
+                    <div class="form-group">
+                        <label>img</label>
+                        <input class="form-control" type="text" name="postImg"> <br>
+
+                        <label>Title</label>
+                        <input class="form-control" type="text" name="postTitle">
+                        <label>Post</label>
+
+                        <textarea class="form-control" name="postBody" rows="5" cols="30"> </textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" name="button">Publish</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br><br>
+
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome to my blog !</h1>
+        <p class="lead">
+            <%=startingContent %>
+        </p>
+        <hr class="my-4">
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </div>
+    <!--  -->
+
+    <!-- posts cards loop -->
+    <div class="card-deck">
+        <div class="row">
+            <%  posts.forEach( (post) => { %>
+                <div class="col-lg-6">
+
+                    <div class="card" style="margin-bottom: 25px;">
+                        <img src="<%=post.img%>" style="width: 100%; height: 220px;" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h3>
+                                <%=post.title%> <span class="badge badge-secondary">  New</span></h3>
+
+                            <p class="card-text">
+                                <%=post.content.substring(0,200) + '...'%>
+                                    <a href="/posts/<%=post._id%>">
+
+                            </p>
+                            <% if (post.content.length > 2000) { %>
+                                <h4>
+                                    <hr><button class="btn btn-dark ">Read more</button></a>
+
+
+                                    <small>Reading time: </small>
+
+                                    <%=parseInt((post.content.length / 1000) / 2) %>
+                                        <small> minutes</small>
+                                </h4>
+                                <% } else { %>
+
+
+
+
+                                    <h4>
+                                        <hr><button class="btn btn-dark ">Read more</button></a>Reading time less than a minute </h4>
+                                    <% }%>
+
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+        </div>
+    </div>
+    <hr>
+
+    <main role="main" class="container">
+        <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
+            <img class="mr-3" src="../../assets/brand/bootstrap-outline.svg" alt="" width="48" height="48">
+            <div class="lh-100">
+                <h6 class="mb-0 text-white lh-100">Recent Posts</h6>
+                <small>Check it out</small>
+
+            </div>
+
+        </div>
+        <button style="float: right;" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Post a new blog</button>
+
+        <div class="my-3 p-3 bg-white rounded shadow-sm">
+            <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
+            <%  posts.forEach( (post) => { %>
+
+                <div class="media text-muted pt-3">
+                    <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
+                    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+
+
+                        <strong class="d-block text-gray-dark">  <img src="<%=post.img%>" style="width: 50px; height: 50px;" class="card-img-top" alt="..."> <%=post.title%></strong>
+                        <%=post.content.substring(0,100) + '...'%>
+                            <a href="/posts/<%=post._id%>"><button class="btn btn-dark btn-sm " >Read more</button></a>
+
+                    </p>
+                </div>
+                <% }); %>
+
+
+                    <small class="d-block text-right mt-3">
+          <a href="#">All updates</a>
+        </small>
+        </div>
+
+        </div>
+    </main>
+
+    <script src="/js/index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <%- include('partials/footer'); -%>

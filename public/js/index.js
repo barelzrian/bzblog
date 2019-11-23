@@ -1,0 +1,1 @@
+document.getElementsByClassName('progress-bar').width(posts.title[0].length)
