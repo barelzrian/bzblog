@@ -22,7 +22,7 @@
     "jquery": "^3.4.1",
     "jsdom": "^15.2.1",
     "jsonwebtoken": "^8.5.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "mogoose": "0.0.1-security",
     "mongodb": "^3.3.4",
     "mongoose": "^5.7.11",
