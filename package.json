@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@hapi/joi": "^15.0.3",
-    "bcrypt": "^3.0.7",
+    "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "curl": "^0.1.4",
