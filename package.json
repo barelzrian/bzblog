@@ -20,7 +20,7 @@
     "express-flash": "0.0.2",
     "express-session": "^1.17.0",
     "jquery": "^3.4.1",
-    "jsdom": "^15.2.1",
+    "jsdom": "^16.5.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
     "mogoose": "0.0.1-security",
